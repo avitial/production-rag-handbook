@@ -1,0 +1,6 @@
+# day 1 
+sentence-transformers
+numpy
+pandas
+jupyter
+pytest
