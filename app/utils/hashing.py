@@ -10,7 +10,6 @@ from __future__ import annotations
 from hashlib import sha256
 from pathlib import Path
 from typing import BinaryIO
-
 DEFAULT_BLOCK_SIZE=1024*1024
 
 def sha256_stream(stream: BinaryIO, *, block_size: int=DEFAULT_BLOCK_SIZE) -> str:
