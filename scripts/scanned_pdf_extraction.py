@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath("/home/avitial/workspace/RAG/production-rag-hand
 from app.ingestion.ocr import ocr_pdf
 
 results = ocr_pdf(
-    "/home/avitial/workspace/RAG/production-rag-handbook/data/development/SYN-200989.pdf"
+    "/home/avitial/workspace/RAG/production-rag-handbook/data/development/SYN-200849_scanned.pdf"
 )
 
 for result in results:
