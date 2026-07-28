@@ -40,7 +40,7 @@ class DocumentType(StrEnum):
 
 
 class DocumentMetadata(BaseModel):
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    model_config = ConfigDict(extra="allow", str_strip_whitespace=True)
 
     patient_id: str | None = None
     document_type: DocumentType | None = None
@@ -61,7 +61,7 @@ class DocumentMetadata(BaseModel):
 class LocalSource(BaseModel):
     """Validated local file source."""
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="allow")
 
     path: Path
     source_format: SourceFormat
@@ -79,7 +79,7 @@ class LocalSource(BaseModel):
 class DocumentPage(BaseModel):
     """One extracted page or one image treated as page 1."""
 
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    model_config = ConfigDict(extra="allow", str_strip_whitespace=True)
 
     document_id: str = Field(min_length=1)
     filename: str = Field(min_length=1)
@@ -100,7 +100,7 @@ class DocumentPage(BaseModel):
 class DocumentChunk(BaseModel):
     """Retrievable page-bounded passage."""
 
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    model_config = ConfigDict(extra="allow", str_strip_whitespace=True)
 
     chunk_id: str = Field(min_length=1)
     document_id: str = Field(min_length=1)
