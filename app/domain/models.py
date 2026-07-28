@@ -136,3 +136,32 @@ class DocumentChunk(BaseModel):
         if self.end_offset - self.start_offset != len(self.text):
             raise ValueError("offset span must equal chunk text length")
         return self
+
+
+class OCRResult(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    text: str
+    confidence: float | None = Field(default=None, ge=0, le=100)
+    extraction_method: ExtractionMethod
+    language: str = "eng"
+    duration_ms: float = Field(ge=0)
+    source_path: str
+    page_number: int = Field(ge=1)
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+
+class MetadataEvidence(BaseModel):
+    field_name: str
+    value: str
+    matched_text: str
+    start_offset: int = Field(ge=0)
+    end_offset: int = Field(gt=0)
+
+
+class MetadataExtractionResult(BaseModel):
+    metadata: DocumentMetadata
+    confidence: float = Field(ge=0, le=1)
+    evidence: list[MetadataEvidence] = Field(default_factory=list)
+    warnings: list[str] = Field(default_factory=list)
