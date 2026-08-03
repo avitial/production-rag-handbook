@@ -19,3 +19,11 @@ pymupdf
 pillow
 pytesseract
 pytest
+
+# day 5
+pymupdf
+pillow
+pytesseract
+pytest
+sentence-transformers
+chromadb
