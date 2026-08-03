@@ -20,6 +20,26 @@ import json
 import math
 
 
+def _matches_where(metadata: dict[str, Any], where: dict[str, Any] | None) -> bool:
+    """Evaluate the Chroma filter subset used by Day 6."""
+    if not where:
+        return True
+    if "$and" in where:
+        return all(_matches_where(metadata, item) for item in where["$and"])
+    for key, expected in where.items():
+        actual = metadata.get(key)
+        if isinstance(expected, dict):
+            for operator, target in expected.items():
+                if actual is None: return False
+                if operator == "$gte" and not actual >= target: return False
+                if operator == "$lte" and not actual <= target: return False
+                if operator == "$gt" and not actual > target: return False
+                if operator == "$lt" and not actual < target: return False
+                if operator == "$ne" and not actual != target: return False
+        elif actual != expected:
+            return False
+    return True
+
 def cosine_distance(left: list[float], right: list[float]) -> float:
     """Return 1 - cosine similarity."""
     dot = sum(a * b for a, b in zip(left, right))
@@ -83,10 +103,7 @@ class LocalPersistentCollection:
         matching = [
             item_id
             for item_id, record in self._records.items()
-            if all(
-                record["metadata"].get(key) == value
-                for key, value in where.items()
-            )
+            if _matches_where(record["metadata"], where)
         ]
         for item_id in matching:
             del self._records[item_id]
@@ -134,10 +151,7 @@ class LocalPersistentCollection:
             candidates = []
             for item_id, record in self._records.items():
                 metadata = record["metadata"]
-                if where and not all(
-                    metadata.get(key) == value
-                    for key, value in where.items()
-                ):
+                if not _matches_where(metadata, where):
                     continue
                 distance = cosine_distance(
                     list(query_embedding),
