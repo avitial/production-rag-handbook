@@ -6,6 +6,8 @@ from datetime import date
 from enum import StrEnum
 from pathlib import Path
 from typing import Any
+from dataclasses import dataclass, field
+
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -88,7 +90,7 @@ class DocumentPage(BaseModel):
     page_number: int = Field(ge=1)
     text: str
     extraction_method: ExtractionMethod = ExtractionMethod.UNKNOWN
-    metadata: DocumentMetadata = Field(default_factory=DocumentMetadata)
+    metadata: dict[str, Any] = field(default_factory=dict)
     source_hash: str | None = None
 
     @field_validator("text")
@@ -112,7 +114,7 @@ class DocumentChunk(BaseModel):
     text: str = Field(min_length=1)
     start_offset: int = Field(ge=0)
     end_offset: int = Field(gt=0)
-    metadata: dict[str, Any] = Field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
     @field_validator("section")
     @classmethod
@@ -165,3 +167,18 @@ class MetadataExtractionResult(BaseModel):
     confidence: float = Field(ge=0, le=1)
     evidence: list[MetadataEvidence] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class IngestionReport:
+    """Counters and warnings returned from one ingestion run."""
+
+    discovered_files: int
+    processed_files: int
+    skipped_files: int
+    failed_files: int
+    page_count: int
+    chunk_count: int
+    indexed_chunk_count: int
+    document_ids: tuple[str, ...]
+    warnings: tuple[str, ...] = ()

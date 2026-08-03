@@ -1,42 +1,51 @@
-"""Streaming hashing for stable document identity.
+"""Content hashing and deterministic IDs."""
 
-Pseudo-code:
-1. Open file as binary.
-2. Read fixed-size blocks.
-3. Update SHA-256 for each block.
-4. Return the hexadecimal digest.
-"""
 from __future__ import annotations
+
 from hashlib import sha256
 from pathlib import Path
-from typing import BinaryIO
-DEFAULT_BLOCK_SIZE=1024*1024
 
-def sha256_stream(stream: BinaryIO, *, block_size: int=DEFAULT_BLOCK_SIZE) -> str:
-    """Hash an open binary stream without loading the whole file."""
-    if block_size<=0: raise ValueError("block_size must be greater than zero")
-    digest=sha256()
-    while True:
-        block=stream.read(block_size)
-        if not block: break
-        digest.update(block)
+
+def sha256_file(path: str | Path, block_size: int = 1024 * 1024) -> str:
+    """Hash a file without loading the entire file into memory.
+
+    Pseudo-code:
+        open source in binary mode
+        read one block at a time
+        update SHA-256 with every block
+        return hexadecimal digest
+    """
+    if block_size <= 0:
+        raise ValueError("block_size must be greater than zero")
+
+    source = Path(path).expanduser().resolve()
+    if not source.exists():
+        raise FileNotFoundError(source)
+    if not source.is_file():
+        raise ValueError(f"not a regular file: {source}")
+
+    digest = sha256()
+    with source.open("rb") as handle:
+        for block in iter(lambda: handle.read(block_size), b""):
+            digest.update(block)
     return digest.hexdigest()
 
-def sha256_file(path: str|Path, *, block_size: int=DEFAULT_BLOCK_SIZE) -> str:
-    """Validate and hash a local file."""
-    p=Path(path).expanduser().resolve()
-    if not p.exists(): raise FileNotFoundError(f"file does not exist: {p}")
-    if not p.is_file(): raise ValueError(f"path is not a file: {p}")
-    with p.open("rb") as handle:
-        return sha256_stream(handle, block_size=block_size)
 
-def short_hash(digest: str, *, length: int=16) -> str:
-    """Create a readable digest prefix for IDs."""
-    value=digest.strip().lower()
-    if not value: raise ValueError("digest must not be empty")
-    if length<=0 or length>len(value): raise ValueError("invalid length")
-    return value[:length]
+def create_document_id(path: str | Path) -> str:
+    """Create a stable content-based document ID."""
+    return f"doc-{sha256_file(path)[:16]}"
 
-def create_document_id(path: str|Path) -> str:
-    """Create a deterministic content-based ID."""
-    return f"doc-{short_hash(sha256_file(path))}"
+
+def create_chunk_id(
+    document_id: str,
+    page_number: int,
+    start_offset: int,
+    end_offset: int,
+    text: str,
+) -> str:
+    """Create a stable chunk ID from provenance and exact chunk content."""
+    payload = (
+        f"{document_id}|{page_number}|{start_offset}|{end_offset}|{text}"
+    )
+    digest = sha256(payload.encode("utf-8")).hexdigest()[:16]
+    return f"{document_id}-p{page_number}-c{digest}"
