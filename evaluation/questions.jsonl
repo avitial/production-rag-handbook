@@ -1,0 +1,6 @@
+{"question_id": "q-001", "question": "What medication was prescribed at discharge?", "filters": {}, "expected_topics": ["Medications", "Metformin"], "answerable_from_current_samples": false, "notes": "Medication is documented, but the samples do not explicitly say it was prescribed at discharge."}
+{"question_id": "q-002", "question": "What allergies are documented?", "filters": {"patient_id": "SYN-200849"}, "expected_topics": ["Allergies", "Latex"], "answerable_from_current_samples": true}
+{"question_id": "q-003", "question": "When is the follow-up appointment?", "filters": {"patient_id": "SYN-200849"}, "expected_topics": ["Follow-up", "6 months"], "answerable_from_current_samples": true}
+{"question_id": "q-004", "question": "What was the primary diagnosis?", "filters": {"patient_id": "SYN-200989"}, "expected_topics": ["Problems", "Hypertension"], "answerable_from_current_samples": true}
+{"question_id": "q-005", "question": "Which patient had a cardiology referral?", "filters": {}, "expected_topics": ["cardiology", "referral"], "answerable_from_current_samples": false, "notes": "No explicit cardiology referral appears in the supplied samples."}
+{"question_id": "q-006", "question": "What allergy is recorded for SYN-200989?", "filters": {"patient_id": "SYN-200989"}, "expected_topics": ["Allergies", "Shellfish"], "answerable_from_current_samples": true}

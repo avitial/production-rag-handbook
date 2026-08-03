@@ -20,7 +20,7 @@ pillow
 pytesseract
 pytest
 
-# day 5
+# day 5-6
 pymupdf
 pillow
 pytesseract
