@@ -90,7 +90,7 @@ class DocumentPage(BaseModel):
     page_number: int = Field(ge=1)
     text: str
     extraction_method: ExtractionMethod = ExtractionMethod.UNKNOWN
-    metadata: dict[str, Any] = field(default_factory=dict)
+    metadata: DocumentMetadata = Field(default_factory=DocumentMetadata)
     source_hash: str | None = None
 
     @field_validator("text")
