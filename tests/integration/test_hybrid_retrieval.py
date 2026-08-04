@@ -6,6 +6,11 @@ from pathlib import Path
 import shutil
 
 from PIL import Image
+import sys
+import os
+
+# Add the absolute path of the external folder
+sys.path.append(os.path.abspath("/home/avitial/workspace/RAG/production-rag-handbook"))
 
 from app.embeddings.sentence_transformer import (
     DeterministicHashEmbeddingProvider,
