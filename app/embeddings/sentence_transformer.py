@@ -8,6 +8,13 @@ import math
 import re
 from typing import Any
 
+"""Unit tests for medical-aware tokenization."""
+import sys
+import os
+
+# Add the absolute path of the external folder
+sys.path.append(os.path.abspath("/home/avitial/workspace/RAG/production-rag-handbook"))
+
 from app.embeddings.base import EmbeddingProvider
 
 
