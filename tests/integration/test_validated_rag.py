@@ -44,8 +44,8 @@ from app.validation.json_validator import (
 )
 
 
-HANDWRITTEN = Path("/mnt/data/SYN-200849_handwritten.png")
-NATIVE_PDF = Path("/mnt/data/SYN-200989.pdf")
+HANDWRITTEN = Path("/home/avitial/workspace/RAG/production-rag-handbook/data/samples/handwritten/SYN-200849_handwritten.png")
+NATIVE_PDF = Path("/home/avitial/workspace/RAG/production-rag-handbook/data/samples/native-pdf/SYN-200989.pdf")
 
 
 def fake_ocr(_image: Image.Image, *, language: str) -> str:
