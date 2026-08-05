@@ -1,0 +1,600 @@
+{
+  "configuration": {
+    "k": 5,
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "storage_backend": "chroma",
+    "source": "/home/avitial/workspace/RAG/production-rag-handbook/data/samples"
+  },
+  "ingestion": {
+    "processed_files": 2,
+    "skipped_files": 0,
+    "failed_files": 0,
+    "indexed_chunks": 18
+  },
+  "summary": {
+    "question_count": 8,
+    "mean_hit_rate_at_k": 0.75,
+    "mean_precision_at_k": 0.17500000000000002,
+    "mean_recall_at_k": 1.0,
+    "mean_reciprocal_rank": 0.375,
+    "mean_ndcg_at_k": 0.773102366866819
+  },
+  "questions": [
+    {
+      "question_id": "q-001",
+      "question": "What allergies are documented for patient SYN-200849?",
+      "answerable": true,
+      "metrics": {
+        "question_id": "q-001",
+        "hit_rate_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 1.0,
+        "ndcg_at_k": 1.0,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 1
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c553d4ec938bbcf69",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Allergies",
+          "patient_id": "SYN-200849",
+          "score": 0.03278688524590164,
+          "relevant": true,
+          "text_preview": "Allergies Latex"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c99e782b86a2b6357",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200849",
+          "score": 0.03149801587301587,
+          "relevant": false,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Routine exam (Z00.00) P: Continue current therapy"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-cdd13350648ed8d27",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": null,
+          "patient_id": "SYN-200849",
+          "score": 0.03149801587301587,
+          "relevant": false,
+          "text_preview": "ek SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c85d8fc30a4ffd961",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200849",
+          "score": 0.031054405392392875,
+          "relevant": false,
+          "text_preview": "Patient Demographics Legal Name: Riley Kim Patient ID: SYN-200849 Date of Birth: 1987-12-09 Sex: Female Race: Native Hawaiian Ethnicity: Hispanic or Latino Preferred Language: Viet"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c6fd9f312c52deda4",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "ICD-10: Z00.00",
+          "patient_id": "SYN-200849",
+          "score": 0.016129032258064516,
+          "relevant": false,
+          "text_preview": "ICD-10: Z00.00 SNOMED (synthetic placeholder): SYN-152895"
+        }
+      ]
+    },
+    {
+      "question_id": "q-002",
+      "question": "When is the follow-up appointment for patient SYN-200849?",
+      "answerable": true,
+      "metrics": {
+        "question_id": "q-002",
+        "hit_rate_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.5,
+        "ndcg_at_k": 0.6309297535714575,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 1
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c85d8fc30a4ffd961",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200849",
+          "score": 0.03278688524590164,
+          "relevant": false,
+          "text_preview": "Patient Demographics Legal Name: Riley Kim Patient ID: SYN-200849 Date of Birth: 1987-12-09 Sex: Female Race: Native Hawaiian Ethnicity: Hispanic or Latino Preferred Language: Viet"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c99e782b86a2b6357",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200849",
+          "score": 0.03225806451612903,
+          "relevant": true,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Routine exam (Z00.00) P: Continue current therapy"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-cdd13350648ed8d27",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": null,
+          "patient_id": "SYN-200849",
+          "score": 0.03149801587301587,
+          "relevant": false,
+          "text_preview": "ek SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c6fd9f312c52deda4",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "ICD-10: Z00.00",
+          "patient_id": "SYN-200849",
+          "score": 0.015873015873015872,
+          "relevant": false,
+          "text_preview": "ICD-10: Z00.00 SNOMED (synthetic placeholder): SYN-152895"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c380c920f151983c3",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Problems",
+          "patient_id": "SYN-200849",
+          "score": 0.015384615384615385,
+          "relevant": false,
+          "text_preview": "Problems Active Diagnosis: Routine exam"
+        }
+      ]
+    },
+    {
+      "question_id": "q-003",
+      "question": "What medication is listed for patient SYN-200849?",
+      "answerable": true,
+      "metrics": {
+        "question_id": "q-003",
+        "hit_rate_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.25,
+        "ndcg_at_k": 0.43067655807339306,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 1
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c85d8fc30a4ffd961",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200849",
+          "score": 0.032266458495966696,
+          "relevant": false,
+          "text_preview": "Patient Demographics Legal Name: Riley Kim Patient ID: SYN-200849 Date of Birth: 1987-12-09 Sex: Female Race: Native Hawaiian Ethnicity: Hispanic or Latino Preferred Language: Viet"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-cdd13350648ed8d27",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": null,
+          "patient_id": "SYN-200849",
+          "score": 0.0315136476426799,
+          "relevant": false,
+          "text_preview": "ek SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c99e782b86a2b6357",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200849",
+          "score": 0.03149801587301587,
+          "relevant": false,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Routine exam (Z00.00) P: Continue current therapy"
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c93ac77146f9af4a1",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Medications",
+          "patient_id": "SYN-200849",
+          "score": 0.01639344262295082,
+          "relevant": true,
+          "text_preview": "Medications Current: Metformin Past: Ibuprofen"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c6fd9f312c52deda4",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "ICD-10: Z00.00",
+          "patient_id": "SYN-200849",
+          "score": 0.016129032258064516,
+          "relevant": false,
+          "text_preview": "ICD-10: Z00.00 SNOMED (synthetic placeholder): SYN-152895"
+        }
+      ]
+    },
+    {
+      "question_id": "q-004",
+      "question": "What is the primary diagnosis for patient SYN-200989?",
+      "answerable": true,
+      "metrics": {
+        "question_id": "q-004",
+        "hit_rate_at_k": 1.0,
+        "precision_at_k": 0.4,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.5,
+        "ndcg_at_k": 1.0616063116448506,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 2
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c6129a4d494db223e",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "*** SYNTHETIC MEDICAL RECORD ***",
+          "patient_id": "SYN-200989",
+          "score": 0.032266458495966696,
+          "relevant": false,
+          "text_preview": "*** SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-3f2cf8998224a364-p1-ccd0ba5f58c2e1402",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Problems",
+          "patient_id": "SYN-200989",
+          "score": 0.03200204813108039,
+          "relevant": true,
+          "text_preview": "Problems Active Diagnosis: Hypertension"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c267b3bc98c133176",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200989",
+          "score": 0.03177805800756621,
+          "relevant": false,
+          "text_preview": "Patient Demographics Legal Name: Quinn Kim Patient ID: SYN-200989 Date of Birth: 1977-12-28 Sex: Male Race: Other Ethnicity: Hispanic or Latino Preferred Language: Tagalog"
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c0c07f3333264208c",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200989",
+          "score": 0.031754032258064516,
+          "relevant": true,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Hypertension (I10) P: Continue current therapy, e"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-3f2cf8998224a364-p1-cc79c537524fd19a3",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Procedures & Results",
+          "patient_id": "SYN-200989",
+          "score": 0.015625,
+          "relevant": false,
+          "text_preview": "Procedures & Results Laboratory: HbA1c: 6.8% Imaging: Knee X-ray: Mild osteoarthritis."
+        }
+      ]
+    },
+    {
+      "question_id": "q-005",
+      "question": "What allergy is recorded for patient SYN-200989?",
+      "answerable": true,
+      "metrics": {
+        "question_id": "q-005",
+        "hit_rate_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.25,
+        "ndcg_at_k": 0.43067655807339306,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 1
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c6129a4d494db223e",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "*** SYNTHETIC MEDICAL RECORD ***",
+          "patient_id": "SYN-200989",
+          "score": 0.031754032258064516,
+          "relevant": false,
+          "text_preview": "*** SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c0c07f3333264208c",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200989",
+          "score": 0.031746031746031744,
+          "relevant": false,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Hypertension (I10) P: Continue current therapy, e"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c267b3bc98c133176",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200989",
+          "score": 0.03131881575727918,
+          "relevant": false,
+          "text_preview": "Patient Demographics Legal Name: Quinn Kim Patient ID: SYN-200989 Date of Birth: 1977-12-28 Sex: Male Race: Other Ethnicity: Hispanic or Latino Preferred Language: Tagalog"
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c40ad255c612bd530",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Allergies",
+          "patient_id": "SYN-200989",
+          "score": 0.01639344262295082,
+          "relevant": true,
+          "text_preview": "Allergies Shellfish"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-3f2cf8998224a364-p1-ca634a43a6c9ea7f2",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "ICD-10: I10",
+          "patient_id": "SYN-200989",
+          "score": 0.016129032258064516,
+          "relevant": false,
+          "text_preview": "ICD-10: I10 SNOMED (synthetic placeholder): SYN-573699"
+        }
+      ]
+    },
+    {
+      "question_id": "q-006",
+      "question": "What medication was prescribed at discharge?",
+      "answerable": false,
+      "metrics": {
+        "question_id": "q-006",
+        "hit_rate_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.0,
+        "ndcg_at_k": 1.0,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 0
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c93ac77146f9af4a1",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Medications",
+          "patient_id": "SYN-200849",
+          "score": 0.01639344262295082,
+          "relevant": false,
+          "text_preview": "Medications Current: Metformin Past: Ibuprofen"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-3f2cf8998224a364-p1-cc9797444ca95a518",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Medications",
+          "patient_id": "SYN-200989",
+          "score": 0.016129032258064516,
+          "relevant": false,
+          "text_preview": "Medications Current: Metformin Past: Metformin"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c99e782b86a2b6357",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200849",
+          "score": 0.015873015873015872,
+          "relevant": false,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Routine exam (Z00.00) P: Continue current therapy"
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c0c07f3333264208c",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200989",
+          "score": 0.015625,
+          "relevant": false,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Hypertension (I10) P: Continue current therapy, e"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-cdd13350648ed8d27",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": null,
+          "patient_id": "SYN-200849",
+          "score": 0.015384615384615385,
+          "relevant": false,
+          "text_preview": "ek SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        }
+      ]
+    },
+    {
+      "question_id": "q-007",
+      "question": "Which patient had a cardiology referral?",
+      "answerable": false,
+      "metrics": {
+        "question_id": "q-007",
+        "hit_rate_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.0,
+        "ndcg_at_k": 1.0,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 0
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-cdd13350648ed8d27",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": null,
+          "patient_id": "SYN-200849",
+          "score": 0.032018442622950824,
+          "relevant": false,
+          "text_preview": "ek SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c6129a4d494db223e",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "*** SYNTHETIC MEDICAL RECORD ***",
+          "patient_id": "SYN-200989",
+          "score": 0.031746031746031744,
+          "relevant": false,
+          "text_preview": "*** SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c85d8fc30a4ffd961",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200849",
+          "score": 0.0315136476426799,
+          "relevant": false,
+          "text_preview": "Patient Demographics Legal Name: Riley Kim Patient ID: SYN-200849 Date of Birth: 1987-12-09 Sex: Female Race: Native Hawaiian Ethnicity: Hispanic or Latino Preferred Language: Viet"
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c267b3bc98c133176",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200989",
+          "score": 0.030886196246139225,
+          "relevant": false,
+          "text_preview": "Patient Demographics Legal Name: Quinn Kim Patient ID: SYN-200989 Date of Birth: 1977-12-28 Sex: Male Race: Other Ethnicity: Hispanic or Latino Preferred Language: Tagalog"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-3f2cf8998224a364-p1-c0c07f3333264208c",
+          "filename": "SYN-200989.pdf",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200989",
+          "score": 0.029273504273504274,
+          "relevant": false,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Hypertension (I10) P: Continue current therapy, e"
+        }
+      ]
+    },
+    {
+      "question_id": "q-008",
+      "question": "What is the patient ID in the handwritten record?",
+      "answerable": true,
+      "metrics": {
+        "question_id": "q-008",
+        "hit_rate_at_k": 1.0,
+        "precision_at_k": 0.2,
+        "recall_at_k": 1.0,
+        "reciprocal_rank": 0.5,
+        "ndcg_at_k": 0.6309297535714575,
+        "retrieved_count": 5,
+        "relevant_retrieved_count": 1
+      },
+      "results": [
+        {
+          "rank": 1,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-cdd13350648ed8d27",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": null,
+          "patient_id": "SYN-200849",
+          "score": 0.03278688524590164,
+          "relevant": false,
+          "text_preview": "ek SYNTHETIC MEDICAL RECORD *** NOTICE: Entirely fictional. No real patient information."
+        },
+        {
+          "rank": 2,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c85d8fc30a4ffd961",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Patient Demographics",
+          "patient_id": "SYN-200849",
+          "score": 0.03225806451612903,
+          "relevant": true,
+          "text_preview": "Patient Demographics Legal Name: Riley Kim Patient ID: SYN-200849 Date of Birth: 1987-12-09 Sex: Female Race: Native Hawaiian Ethnicity: Hispanic or Latino Preferred Language: Viet"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c99e782b86a2b6357",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Clinical Notes (SOAP)",
+          "patient_id": "SYN-200849",
+          "score": 0.03057889822595705,
+          "relevant": false,
+          "text_preview": "Clinical Notes (SOAP) S: Patient reports routine follow-up with mild intermittent symptoms. O: Appears well. No acute distress. A: Routine exam (Z00.00) P: Continue current therapy"
+        },
+        {
+          "rank": 4,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c6fd9f312c52deda4",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "ICD-10: Z00.00",
+          "patient_id": "SYN-200849",
+          "score": 0.015873015873015872,
+          "relevant": false,
+          "text_preview": "ICD-10: Z00.00 SNOMED (synthetic placeholder): SYN-152895"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "doc-fe18fe4f3cc810e1-p1-c380c920f151983c3",
+          "filename": "SYN-200849_handwritten.png",
+          "page_number": 1,
+          "section": "Problems",
+          "patient_id": "SYN-200849",
+          "score": 0.015625,
+          "relevant": false,
+          "text_preview": "Problems Active Diagnosis: Routine exam"
+        }
+      ]
+    }
+  ]
+}

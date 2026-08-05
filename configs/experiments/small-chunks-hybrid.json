@@ -1,0 +1,13 @@
+{
+  "experiment_id": "small-chunks-hybrid",
+  "description": "Smaller chunks for more focused passages.",
+  "chunk_size": 300,
+  "chunk_overlap": 40,
+  "retrieval_mode": "hybrid",
+  "top_k": 5,
+  "vector_candidates": 15,
+  "bm25_candidates": 15,
+  "fusion_constant": 60,
+  "embedding_backend": "hash",
+  "storage_backend": "local"
+}

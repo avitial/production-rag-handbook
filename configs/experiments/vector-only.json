@@ -1,0 +1,13 @@
+{
+  "experiment_id": "vector-only",
+  "description": "Vector-only retrieval baseline.",
+  "chunk_size": 500,
+  "chunk_overlap": 75,
+  "retrieval_mode": "vector",
+  "top_k": 5,
+  "vector_candidates": 15,
+  "bm25_candidates": 15,
+  "fusion_constant": 60,
+  "embedding_backend": "hash",
+  "storage_backend": "local"
+}

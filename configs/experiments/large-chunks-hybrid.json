@@ -1,0 +1,13 @@
+{
+  "experiment_id": "large-chunks-hybrid",
+  "description": "Larger chunks for broader context.",
+  "chunk_size": 1200,
+  "chunk_overlap": 150,
+  "retrieval_mode": "hybrid",
+  "top_k": 5,
+  "vector_candidates": 15,
+  "bm25_candidates": 15,
+  "fusion_constant": 60,
+  "embedding_backend": "hash",
+  "storage_backend": "local"
+}
