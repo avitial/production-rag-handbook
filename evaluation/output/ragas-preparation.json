@@ -1,0 +1,10 @@
+{
+  "prepared": true,
+  "sample_count": 8,
+  "required_fields": [
+    "reference",
+    "response",
+    "retrieved_contexts",
+    "user_input"
+  ]
+}

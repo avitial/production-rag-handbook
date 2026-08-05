@@ -15,12 +15,12 @@ These findings are generated from the synthetic Day 12 evaluation dataset using 
 
 | Rank | Experiment | Mode | Chunk/Overlap | Hit | Precision | Recall | MRR | nDCG | Query ms | Chunks |
 |---:|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | vector-only | vector | 500/75 | 0.750 | 0.175 | 1.000 | 0.431 | 0.822 | 0.597 | 18 |
+| 1 | vector-only | vector | 500/75 | 0.750 | 0.175 | 1.000 | 0.431 | 0.822 | 0.588 | 18 |
 | 2 | large-chunks-hybrid | hybrid | 1200/150 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.748 | 18 |
-| 3 | baseline-hybrid | hybrid | 800/150 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.767 | 18 |
-| 4 | hybrid-more-candidates | hybrid | 500/75 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.795 | 18 |
-| 5 | medium-chunks-hybrid | hybrid | 500/75 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.798 | 18 |
-| 6 | small-chunks-hybrid | hybrid | 300/40 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.881 | 18 |
+| 3 | small-chunks-hybrid | hybrid | 300/40 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.751 | 18 |
+| 4 | medium-chunks-hybrid | hybrid | 500/75 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.779 | 18 |
+| 5 | baseline-hybrid | hybrid | 800/150 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.781 | 18 |
+| 6 | hybrid-more-candidates | hybrid | 500/75 | 0.750 | 0.175 | 1.000 | 0.348 | 0.760 | 0.805 | 18 |
 | 7 | bm25-only | bm25 | 500/75 | 0.500 | 0.125 | 0.750 | 0.312 | 0.665 | 0.053 | 18 |
 
 ## Interpretation

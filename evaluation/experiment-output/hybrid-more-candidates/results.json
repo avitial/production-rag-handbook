@@ -30,8 +30,8 @@
     "recall_at_k": 1.0,
     "mean_reciprocal_rank": 0.34791666666666665,
     "ndcg_at_k": 0.7599236090563563,
-    "ingestion_ms": 639.5198048558086,
-    "mean_query_ms": 0.7953856256790459,
+    "ingestion_ms": 581.5446102060378,
+    "mean_query_ms": 0.804783747298643,
     "indexed_chunks": 18,
     "failed_files": 0
   },
