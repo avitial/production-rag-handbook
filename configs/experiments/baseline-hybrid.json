@@ -1,0 +1,13 @@
+{
+  "experiment_id": "baseline-hybrid",
+  "description": "Day 12 baseline using hybrid retrieval.",
+  "chunk_size": 800,
+  "chunk_overlap": 150,
+  "retrieval_mode": "hybrid",
+  "top_k": 5,
+  "vector_candidates": 15,
+  "bm25_candidates": 15,
+  "fusion_constant": 60,
+  "embedding_backend": "hash",
+  "storage_backend": "local"
+}

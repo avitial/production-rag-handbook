@@ -1,0 +1,8 @@
+experiment_id,description,retrieval_mode,chunk_size,chunk_overlap,top_k,vector_candidates,bm25_candidates,fusion_constant,embedding_model,storage_backend,question_count,hit_rate_at_k,precision_at_k,recall_at_k,mean_reciprocal_rank,ndcg_at_k,ingestion_ms,mean_query_ms,indexed_chunks,failed_files
+baseline-hybrid,Day 12 baseline using hybrid retrieval.,hybrid,800,150,5,15,15,60,deterministic-hash-384d-v1,local,8,0.750000,0.175000,1.000000,0.347917,0.759924,920.675964,0.766757,18,0
+bm25-only,BM25-only lexical retrieval baseline.,bm25,500,75,5,15,15,60,deterministic-hash-384d-v1,local,8,0.500000,0.125000,0.750000,0.312500,0.665433,576.480756,0.052958,18,0
+hybrid-more-candidates,Hybrid retrieval with a wider candidate pool.,hybrid,500,75,5,25,25,60,deterministic-hash-384d-v1,local,8,0.750000,0.175000,1.000000,0.347917,0.759924,639.519805,0.795386,18,0
+large-chunks-hybrid,Larger chunks for broader context.,hybrid,1200,150,5,15,15,60,deterministic-hash-384d-v1,local,8,0.750000,0.175000,1.000000,0.347917,0.759924,591.273246,0.747866,18,0
+medium-chunks-hybrid,Medium chunks with moderate overlap.,hybrid,500,75,5,15,15,60,deterministic-hash-384d-v1,local,8,0.750000,0.175000,1.000000,0.347917,0.759924,578.509082,0.797771,18,0
+small-chunks-hybrid,Smaller chunks for more focused passages.,hybrid,300,40,5,15,15,60,deterministic-hash-384d-v1,local,8,0.750000,0.175000,1.000000,0.347917,0.759924,612.541196,0.880704,18,0
+vector-only,Vector-only retrieval baseline.,vector,500,75,5,15,15,60,deterministic-hash-384d-v1,local,8,0.750000,0.175000,1.000000,0.431250,0.822424,584.147856,0.597257,18,0
