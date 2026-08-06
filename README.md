@@ -446,6 +446,6 @@ See the `LICENSE` file for complete details.
 
 # Acknowledgements
 
-Medical Document Assistant was built as an educational and portfolio project to demonstrate modern Retrieval-Augmented Generation (RAG) concepts and production-inspired AI software engineering practices.
+Production Rag Handbook (Medical Document Assistant) was built as an educational and portfolio project to demonstrate modern Retrieval-Augmented Generation (RAG) concepts and production-inspired AI software engineering practices.
 
 The project integrates OCR, document processing, semantic search, vector databases, hybrid retrieval, reranking, grounded generation, confidence scoring, evaluation, and REST APIs into a modular architecture suitable for experimentation, learning, and future extension.
