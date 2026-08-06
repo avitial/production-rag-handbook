@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)](#)
 
-Medical Document Assistant is an end-to-end Retrieval-Augmented Generation (RAG) application that processes unstructured medical documents from local sources. The system ingests PDFs, scanned documents, images, and handwritten notes, extracts structured information using OCR, indexes documents into a vector database, performs hybrid retrieval, reranks relevant passages, and generates citation-grounded answers through a REST API.
+Production Rag Handbook (Medical Document Assistant) is an end-to-end Retrieval-Augmented Generation (RAG) application that processes unstructured medical documents from local sources. The system ingests PDFs, scanned documents, images, and handwritten notes, extracts structured information using OCR, indexes documents into a vector database, performs hybrid retrieval, reranks relevant passages, and generates citation-grounded answers through a REST API.
 
 This project was developed as a learning platform for modern AI document processing systems while following production-inspired software architecture and engineering practices.
 
