@@ -13,11 +13,11 @@ from app.api.main import create_app
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 HANDWRITTEN = (
     PROJECT_ROOT
-    / "data/samples/handwritten/SYN-200849_handwritten.png"
+    / "/home/avitial/workspace/RAG/production-rag-handbook/data/samples/handwritten/SYN-200849_handwritten.png"
 )
 NATIVE_PDF = (
     PROJECT_ROOT
-    / "data/samples/native-pdf/SYN-200989.pdf"
+    / "/home/avitial/workspace/RAG/production-rag-handbook/data/samples/native-pdf/SYN-200989.pdf"
 )
 
 
