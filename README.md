@@ -307,6 +307,70 @@ Example response:
   ]
 }
 ```
+## Local LLM Generation with Ollama
+
+The project can use a real local language model through Ollama while keeping
+documents, prompts, and generated answers on the configured machine.
+
+### Install Ollama on Ubuntu 24.04
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+
+$ sudo systemctl start ollama
+$ sudo systemctl status ollama
+```
+
+Install the project's optional integration dependencies:
+
+```bash
+$ source .venv/bin/activate
+$ python -m pip install -r requirements-ollama.txt
+```
+
+Pull the default model:
+
+```bash
+$ ollama pull gemma3:4b
+```
+
+Check readiness:
+
+```bash
+$ python scripts/check_ollama.py \
+  --model gemma3:4b
+```
+
+Configure the application:
+
+```bash
+$ export MDA_LLM_BACKEND=ollama
+$ export MDA_OLLAMA_HOST=http://127.0.0.1:11434
+$ export MDA_OLLAMA_MODEL=gemma3:4b
+$ export MDA_OLLAMA_TIMEOUT_SECONDS=120
+$ export MDA_OLLAMA_KEEP_ALIVE=5m
+$ export MDA_OLLAMA_CONTEXT_LENGTH=8192
+```
+
+Run the direct end-to-end demonstration:
+
+```bash
+$ python scripts/run_ollama_rag.py \
+  data/samples \
+  --model gemma3:4b \
+  --reset
+```
+
+Or start FastAPI with Ollama generation:
+
+```bash
+$ uvicorn app.api.main:app \
+  --host 127.0.0.1 \
+  --port 8000
+```
+
+See [`docs/ollama-integration.md`](docs/ollama-integration.md) for architecture,
+hardware guidance, testing, and troubleshooting.
 
 ---
 

@@ -2,7 +2,7 @@
 
 from time import perf_counter
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.api.dependencies import RuntimeServices, get_services
 from app.api.schemas import (
@@ -12,6 +12,7 @@ from app.api.schemas import (
     QuestionApiResponse,
 )
 from app.confidence.features import extract_confidence_features
+from app.generation.ollama_llm_client import OllamaBackendError
 from app.reranking.base import RerankingRequest
 from app.retrieval.models import SearchFilters, VectorSearchRequest
 from app.validation.answer_validator import validate_answer
@@ -55,10 +56,20 @@ def ask_question(
             top_n=request.final_k,
         )
     )
-    answer = services.generator.generate(
-        question=request.question,
-        passages=reranking.results,
-    )
+    try:
+        answer = services.generator.generate(
+            question=request.question,
+            passages=reranking.results,
+        )
+    except OllamaBackendError as exc:
+        services.logger.log(
+            "ollama_generation_failed",
+            fields={"error": str(exc)},
+        )
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=str(exc),
+        ) from exc
     answer_validation = validate_answer(
         answer,
         expected_patient_id=request.filters.patient_id,
