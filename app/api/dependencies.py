@@ -23,7 +23,8 @@ from typing import Callable
 from app.confidence.policy import ConfidencePolicy
 from app.embeddings.sentence_transformer import create_embedding_provider
 from app.generation.context_builder import ContextBuilder, ContextBuilderConfig
-from app.generation.local_llm_client import DeterministicLocalLLMClient
+from app.generation.factory import create_llm_client
+from app.generation.llm_client import LLMClient
 from app.generation.rag_generator import RAGGenerator
 from app.ingestion.pipeline import IngestionConfig, LocalIngestionPipeline
 from app.observability.logger import StructuredLogger
@@ -46,6 +47,12 @@ class ApiSettings:
     embedding_backend: str = "auto"
     storage_backend: str = "auto"
     reranker_backend: str = "auto"
+    llm_backend: str = "deterministic"
+    ollama_model: str = "gemma3:4b"
+    ollama_host: str = "http://127.0.0.1:11434"
+    ollama_timeout_seconds: float = 120.0
+    ollama_keep_alive: str = "5m"
+    ollama_context_length: int = 8192
     persistence_directory: str = "./runtime/chroma"
     registry_path: str = "./runtime/document-registry.sqlite3"
     upload_directory: str = "./runtime/uploads"
@@ -75,6 +82,28 @@ class ApiSettings:
             reranker_backend=os.getenv(
                 "MDA_RERANKER_BACKEND",
                 "auto",
+            ),
+            llm_backend=os.getenv(
+                "MDA_LLM_BACKEND",
+                "deterministic",
+            ),
+            ollama_model=os.getenv(
+                "MDA_OLLAMA_MODEL",
+                os.getenv("OLLAMA_MODEL", "gemma3:4b"),
+            ),
+            ollama_host=os.getenv(
+                "MDA_OLLAMA_HOST",
+                os.getenv("OLLAMA_HOST", "http://127.0.0.1:11434"),
+            ),
+            ollama_timeout_seconds=float(
+                os.getenv("MDA_OLLAMA_TIMEOUT_SECONDS", "120")
+            ),
+            ollama_keep_alive=os.getenv(
+                "MDA_OLLAMA_KEEP_ALIVE",
+                "5m",
+            ),
+            ollama_context_length=int(
+                os.getenv("MDA_OLLAMA_CONTEXT_LENGTH", "8192")
             ),
             persistence_directory=os.getenv(
                 "MDA_CHROMA_DIR",
@@ -123,6 +152,7 @@ class RuntimeServices:
         settings: ApiSettings,
         *,
         ocr_function: Callable | None = None,
+        llm_client: LLMClient | None = None,
     ) -> None:
         self.settings = settings
         self.lock = RLock()
@@ -162,8 +192,16 @@ class RuntimeServices:
             ),
         )
         self.reranker = create_reranker(settings.reranker_backend)
+        selected_llm_client = llm_client or create_llm_client(
+            settings.llm_backend,
+            ollama_model=settings.ollama_model,
+            ollama_host=settings.ollama_host,
+            ollama_timeout_seconds=settings.ollama_timeout_seconds,
+            ollama_keep_alive=settings.ollama_keep_alive,
+            ollama_context_length=settings.ollama_context_length,
+        )
         self.generator = RAGGenerator(
-            llm_client=DeterministicLocalLLMClient(),
+            llm_client=selected_llm_client,
             context_builder=ContextBuilder(
                 ContextBuilderConfig(
                     maximum_characters=settings.maximum_context_characters,
