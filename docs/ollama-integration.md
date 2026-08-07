@@ -351,7 +351,7 @@ $ python -m pip install -r requirements-ollama.txt
 Use a smaller model or reduce:
 
 ```bash
-export MDA_OLLAMA_CONTEXT_LENGTH=4096
+$ export MDA_OLLAMA_CONTEXT_LENGTH=4096
 ```
 
 ### Out of memory
